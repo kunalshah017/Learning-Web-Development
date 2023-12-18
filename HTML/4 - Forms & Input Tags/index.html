@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="login-form">
+        <form action=" login-successful.html">
+            <div id="username">
+                <input type="text" placeholder="Username">
+            </div>
+            <div id="password">
+                <input type="password" placeholder="Password">
+            </div>
+            <div id="dob">
+                <input type="date" placeholder="Date of Birth">
+            </div>
+            <div>
+                <label for="male">Male</label>
+                <input type="radio" id="male" name="gender" value="male">
+                <label for="female">Female</label>
+                <input type="radio" id="female" name="gender" value="female">
+            </div>
+            <div>
+                <label for="country">Country :</label>
+                <select name="country" id="country">
+                    <option value="india">India</option>
+                    <option value="usa">USA</option>
+                    <option value="uk">UK</option>
+                </select>
+            </div>
+            <div>
+                <label for="hobbies">Hobbies :</label>
+                <input type="checkbox" id="hobbies" name="hobbies" value="cricket">
+                <label for="cricket">Cricket</label>
+                <input type="checkbox" id="hobbies" name="hobbies" value="football">
+                <label for="football">Football</label>
+                <input type="checkbox" id="hobbies" name="hobbies" value="hockey">
+                <label for="hockey">Hockey</label>
+            </div>
+            <div id="login-button">
+                <button type="submit">Login</button>
+            </div>
+        </form>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
