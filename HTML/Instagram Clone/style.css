@@ -1,0 +1,116 @@
+*
+{
+    font-family: 'Comic Neue', cursive;
+font-family: 'Montserrat', sans-serif;
+font-family: 'Roboto Flex', sans-serif;
+}
+
+.mobile-warning
+{
+    display: none;
+}
+
+@media only screen and (max-width: 930px) {
+    .mobile-warning
+    {position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: black;
+        color: white;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center; 
+        font-size: 30px;
+        z-index: 1000;
+    }
+}
+
+aside
+{
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: black;
+    width: 17.87%;
+    height: 100%;
+    border-right: 1px solid #262626;
+    z-index: 1000;
+}
+
+.logo{
+    margin-left: 24px;  
+    display: flex;
+    margin-top: 40px;
+}
+
+aside .options
+{
+    color: white;   
+    margin-left: 14px;
+    margin-top: 40px;
+}
+
+aside .options div{
+    padding-left: 5px;
+    margin-right: 25px;
+    padding-bottom: 8px;
+}
+
+aside .options *
+{
+    /* border: 1px solid #262626; */
+    margin-top: 10px;
+    display: flex;
+    align-items: center;
+    transition: all 0.2s ease-in-out;
+}
+
+aside .options img
+{
+    mix-blend-mode: screen;
+}
+
+aside .options .home label
+{
+    font-size: 16px;
+    font-weight: 600;
+    margin-left: 17px;
+}
+
+aside .options label
+{
+    font-size: 16px;
+    font-weight: 350;
+    margin-left: 17px;
+}
+
+.options *:hover
+{
+    cursor: pointer;
+    background-color: #262626;
+    border-radius: 10px;
+
+    img{
+        transform: scale(1.1);
+    }
+}
+
+aside .options .more
+{
+    position: fixed;
+    margin-top: 150px;
+}
+
+
+main{
+    position: fixed;
+    top: 0;
+    right: 0;
+    margin-left: 20%;
+    width: 100%;
+    height: 100%;
+    background-color: black ;
+}
