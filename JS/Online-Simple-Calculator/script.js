@@ -8,8 +8,8 @@ var operator = "";
 var steps = 0;
 var easteregg = false;
 
-var btnClickAudio = new Audio("/assets/button-click.mp3");
-var clkTickAudio = new Audio("/assets/clock-tick.mp3");
+var btnClickAudio = new Audio("assets/button-click.mp3");
+var clkTickAudio = new Audio("assets/clock-tick.mp3");
 
 const input = document.querySelector(".calc-inputs");
 const stepCount = document.querySelector(".step-counter");
