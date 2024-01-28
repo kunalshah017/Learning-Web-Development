@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Super Calculator</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="assets/favicon.png" type="image/png">
+    <style type="text/css">
+        @font-face {
+            font-family: "Calculator-Font";
+            src: url(/assets/digital-7-italic.ttf) format("truetype");
+        }
+    </style>
+</head>
+
+<body>
+    <main>
+        <div class="calc-body">
+            <div class="calc-screen">
+                <span class="step-counter"></span>
+                <input disabled type="text" class="calc-inputs" />
+            </div>
+            <div class="calc-btns">
+                <div class="calc-btns-row">
+                    <button class="calc-btn calc-btn-clear" onclick="clearScreen()">C</button>
+                    <button class="calc-btn calc-btn-del" onclick="backspace()">DEL</button>
+                    <button class="calc-btn calc-btn-percent" onclick="takeInput('%')">%</button>
+                    <button class="calc-btn calc-btn-divide" onclick="takeInput('÷')">÷</button>
+                </div>
+                <div class="calc-btns-row">
+                    <button class="calc-btn" id="calc-btn-7" onclick="takeInput(7)">7</button>
+                    <button class="calc-btn" id="calc-btn-8" onclick="takeInput(8)">8</button>
+                    <button class="calc-btn" id="calc-btn-9" onclick="takeInput(9)">9</button>
+                    <button class="calc-btn" id="calc-btn-multiply" onclick="takeInput('×')">X</button>
+                </div>
+                <div class="calc-btns-row">
+                    <button class="calc-btn" id="calc-btn-4" onclick="takeInput(4)">4</button>
+                    <button class="calc-btn" id="calc-btn-5" onclick="takeInput(5)">5</button>
+                    <button class="calc-btn" id="calc-btn-6" onclick="takeInput(6)">6</button>
+                    <button class="calc-btn" id="calc-btn-minus" onclick="takeInput('-')">-</button>
+                </div>
+                <div class="calc-btns-row">
+                    <button class="calc-btn" id="calc-btn-1" onclick="takeInput(1)">1</button>
+                    <button class="calc-btn" id="calc-btn-2" onclick="takeInput(2)">2</button>
+                    <button class="calc-btn" id="calc-btn-3" onclick="takeInput(3)">3</button>
+                    <button class="calc-btn" id="calc-btn-plus" onclick="takeInput('+')">+</button>
+                </div>
+                <div class="calc-btns-row">
+                    <button class="calc-btn" id="calc-btn-0" onclick="takeInput(0)">0</button>
+                    <button class="calc-btn" id="calc-btn-00" onclick="takeInput('00')">00</button>
+                    <button class="calc-btn" id="calc-btn-dot" onclick="addDecimal()">.</button>
+                    <button class="calc-btn" id="calc-btn-equal" onclick="evaluateInput()">=</button>
+                </div>
+            </div>
+        </div>
+    </main>
+
+
+    <script src="script.js"></script>
+</body>
+
+</html>

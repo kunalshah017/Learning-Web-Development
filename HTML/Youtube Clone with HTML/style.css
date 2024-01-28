@@ -7,8 +7,7 @@ body{
 }
 
 ::-webkit-scrollbar {
-    width: 0px;
-  } 
+}
 
 nav{
     background-color: #0f0f0f;
@@ -69,7 +68,7 @@ nav{
 }
 
 .search span:hover{
-    box-shadow: 0 0 5px 0 red
+    box-shadow: 0 0 5px 0 red;
 }
 
 .logo{
@@ -113,66 +112,55 @@ nav{
 
 main{
     margin-top: 45px;
-}
-
-.mid-video
-{
-    margin : 0px 60px;
-}
-
-.video-line{
     width: 100%;
-    height: 320px;
-    justify-content: center;
-    align-items: center;   
     display: flex;
 }
 
-.video-line span{
+.container{
     display: flex;
-    /* background-color: #333; */
-    /* border: 1px solid #333; */
-    width: 390px;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: center;
+    padding-top: 20px;
 }
 
-.video-line img{
-    display: block;
-    height: 220px;
-    width: 390px;
-    margin: 10px 10px;
-    border-radius: 15px;
+.card{
+    color: #fff;
+    width: 400px;
+    margin: 20px;
+    padding-bottom: 20px;   
     transition: all 0.3s ease-in-out;
 }
 
-.video-line img:hover{
-    border-radius: 0;
+.card:hover{
     transform: scale(1.05);
-    border-bottom: 5px solid red;
-}
-
-.video-line label{
-    width: 390px;
-    color: #fff;
-    font-size: 20px;
-    font-weight: bold;
-    margin: 10px 10px;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
+    transition: 0.5s;
     cursor: pointer;
+    border-radius: 10px;
 }
 
-a{
-    text-decoration: none;
+.card img{
+    /* width: 100%; */
+    height: 225px;
+    border-radius: 10px ;
 }
 
-.mid-label, .mid-channel{
-    padding-left: 57px;
+.card h2{
+    font-size: 20px;
+    margin: 10px 0;
 }
 
-.channel, .mid-channel{
-    color: #928e8e !important;
-    font-size: 15px !important;
-    font-weight: 500 !important;
+.card p{
+    font-size: 15px;
+    margin: 10px 0;
 }
 
+@media screen and (max-width: 800px){
+    .search input{
+        width: 200px;
+    }
+
+    .logo {
+        display: none;
+    }
+}
