@@ -18,7 +18,7 @@ function takeInput(a) {
   btnClickAudio.play();
   console.log(typeof a);
 
-  if (typeof a == "string" && a != "00" && a != ".") {
+  if (typeof a == "string" && a != "00" && a != "." && a != "0") {
     if (operand1Taken) {
       multiOperandCalculation();
     }
@@ -44,6 +44,14 @@ function takeInput(a) {
     console.log("second number = ", operand2);
   }
 
+  if (a == "0") {
+    if (!operand1Taken) {
+      operand1 *= 10;
+    } else {
+      operand2 *= 10;
+    }
+  }
+
   if (a == "00") {
     if (!operand1Taken) {
       operand1 *= 100;
@@ -51,7 +59,10 @@ function takeInput(a) {
       operand2 *= 100;
     }
   }
+
   input.value += a;
+    console.log("first number = ", operand1);
+  console.log("second number = ", operand2);
 }
 
 function clearScreen() {
