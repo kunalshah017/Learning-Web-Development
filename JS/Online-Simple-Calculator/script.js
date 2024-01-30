@@ -148,10 +148,13 @@ function multiOperandCalculation() {
   } else if (operator == "-") {
     operand1 -= operand2;
   } else if (operator == "×") {
+    operand2=1;
     operand1 *= operand2;
   } else if (operator == "÷") {
+    operand2=1;
     operand1 /= operand2;
   } else if (operator == "%") {
+    operand2=1;
     operand1 %= operand2;
   }
   console.log("operand1 = ", operand1);
