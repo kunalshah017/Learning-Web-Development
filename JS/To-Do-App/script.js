@@ -2,6 +2,10 @@ const taskInput = document.getElementById("TaskInput");
 
 const taskList = document.getElementById("task-list");
 
+window.onload = function () {
+  taskInput.focus();
+};
+
 const addTask = () => {
   const task = taskInput.value;
   if (task) {
