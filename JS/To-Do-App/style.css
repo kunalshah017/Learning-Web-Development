@@ -1,13 +1,76 @@
 *{
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
+    box-sizing: border-box;   
 }
+
+::-webkit-scrollbar{
+    width: 5px;
+}
+
+::-webkit-scrollbar-thumb{
+    background-color: #333;
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-track{
+    background-color: #FFFB7D;
+    border-radius: 10px;
+}
+
 
 body{
     background-color: #85FFBD;
 background-image: linear-gradient(45deg, #85FFBD 0%, #FFFB7D 100%);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
     height: 100vh;
+    font-family: 'Caveat', cursive;
+}
+
+.dark{
+    background-image: linear-gradient(45deg, #333 0%, #000 100%);
+}
+
+.dark .top-nav-bar select{
+    background-color: #333;
+    color: #FFFB7D;
+}
+
+.dark .top-nav-bar select:hover{
+    background-color: #000;
+}
+
+.dark .theme-change-container button{
+    background-color: #333;
+}
+
+.dark .theme-change-container button:hover{
+    background-color: #000;
+}
+
+
+.dark .task-input-container{
+    background-color: #333;
+}
+
+.dark .task-input-container h1{
+    color: #FFFB7D;
+}
+
+.dark .task-input input{
+    background: transparent;
+    border-bottom: 2px solid #FFFB7D;
+    color: #FFFB7D;
+    caret-color: #FFFB7D;
+}
+
+.dark .task-list li{
+    background-color: #333;
+}
+
+.dark .task-list li p{
+    color: #FFFB7D;
 }
 
 main{
@@ -17,6 +80,67 @@ main{
     align-items: center;
     height: 100%;
     /* border: 1px solid red; */
+}
+
+.top-nav-bar{
+    height: 10%;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+    /* border: 1px solid red; */
+}
+
+.top-nav-bar select{
+    feild-sizing: content;
+    height: 30px;
+    width: 100%;
+    border: none;
+    border-radius: 10px;
+    background-color: #FFFB7D;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    font-size: 1.5rem;
+    font-family: 'Caveat', cursive;
+    font-weight: 700;
+    text-align: center;
+    color: #333;
+    padding: 0 10px;
+    outline: none;
+    transition: all 0.3s ease;
+}
+
+.top-nav-bar select:hover{
+    background-color: #FFD56D;
+    transform: scale(1.1);
+}
+
+.theme-change-container{
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    /* border: 1px solid red; */
+}
+
+.theme-change-container button img{
+    height: 30px;
+    width: 30px;
+}
+
+.theme-change-container button{
+    height: 50px;
+    width: 50px;
+    border: none;
+    background-color: #FFFB7D;
+    border-radius: 50%;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    transition: all 0.7s ease;
+    display: grid;
+    place-items: center;
 }
 
 .task-input-container{
@@ -32,7 +156,6 @@ main{
 }
 
 .task-input-container h1{
-    font-family: 'Caveat', cursive;
     font-size: 2rem;
     font-weight: 700;
     color: #333;
@@ -52,8 +175,8 @@ main{
     width: 100%;
     border: none;
     border-bottom: 2px solid #333;
-    font-size: 1.5rem;
     font-family: 'Caveat', cursive;
+    font-size: 1.5rem;
     font-weight: 700;
     padding: 0 10px;
     outline: none;
@@ -64,7 +187,7 @@ main{
 
 .task-input button{
     height: 50px;
-    width: 50px;
+    width: 60px;
     border: none; 
     background-color: #FFFB7D;
     border-radius: 50%;
@@ -75,14 +198,20 @@ main{
     place-items: center;
 }
 
-.task-input button img{
+#add img{ 
     height: 40px;
     width: 40px;
     transition: all 1s ease;
 }
 
-.task-input button img:hover{
+#add img:hover{
     transform: rotate(180deg);
+}
+
+#clear-all img{
+    height: 30px;
+    width: 30px;
+    transition: all 1s ease;
 }
 
 .task-input button:hover{
@@ -96,6 +225,8 @@ main{
     /* border: 1px solid red; */
     margin-top: 20px;
     overflow-y: auto;
+    scrollbar-width: thin;
+
 }
 
 .task-list{
@@ -136,8 +267,22 @@ main{
     opacity: 0.5;
 }
 
+.task{
+    height: 50px;
+    width: 90%;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 0 0 20px;
+    margin-top: 10px;
+    transition: all 0.7s ease;
+    min-height: 50px;
+}
+
 .task p{
-    font-family: 'Caveat', cursive;
     font-size: 1.5rem;
     font-weight: 700;
     color: #333;
@@ -179,6 +324,28 @@ main{
 
 @media screen and (max-width: 640px){
     .task-input-container{
+        width: 90%;
+        height: 150px;
         flex-direction: column;
+    }
+
+    .task-input{
+        width: 100%;
+    }
+
+    .task-input button{
+        border-radius: 50%;
+    }
+
+    .task-list-container{
+        width: 90%;
+    }
+
+    .task{
+        width: 100%;
+    }
+
+    .task-buttons{
+        width: 30%;
     }
 }

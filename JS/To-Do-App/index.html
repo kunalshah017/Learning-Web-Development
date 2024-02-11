@@ -13,13 +13,34 @@
 </head>
 
 <body>
+    <nav class="top-nav-bar">
+        <div class="font-change-container">
+            <select id="font-change" onchange="changeFont()">
+                <option value="Caveat" style="font-family:'Caveat', cursive;">Caveat</option>
+                <option value="Arial" style="font-family:'Arial', sans-serif;">Arial</option>
+                <option value="Times New Roman" style="font-family:'Times New Roman', serif;">Times New Roman</option>
+                <option value="Courier New" style="font-family:'Courier New', monospace;">Courier New</option>
+                <option value="Comic Sans MS" style="font-family:'Comic Sans MS', cursive;">Comic Sans MS</option>
+            </select>
+        </div>
+
+        <div class="theme-change-container">
+            <button id="theme-change" onclick="changeTheme()">
+                <img src="assets/moon-icon.svg" />
+            </button>
+        </div>
+    </nav>
+
     <main>
         <div class="task-input-container">
             <h1>To-Do App</h1>
             <div class="task-input">
                 <input type="text" id="TaskInput" placeholder="Add a new task">
-                <button id="add" onclick="addTask()">
+                <button id="add" onclick="addTask()" title="Add Task">
                     <img src="assets/plus-icon.svg" />
+                </button>
+                <button id="clear-all" onclick="clearAll()" title="Clear All">
+                    <img src="assets/delete-icon.svg" />
                 </button>
             </div>
         </div>

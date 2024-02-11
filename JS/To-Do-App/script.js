@@ -1,6 +1,8 @@
 const taskInput = document.getElementById("TaskInput");
-
 const taskList = document.getElementById("task-list");
+
+const themeChange = document.getElementById("theme-change");
+let font = document.getElementById("font-change");
 
 window.onload = function () {
   taskInput.focus();
@@ -53,8 +55,51 @@ function saveData() {
 }
 
 function loadData() {
-  console.log(localStorage.getItem("taskList"));
   taskList.innerHTML = localStorage.getItem("taskList");
 }
 
 loadData();
+
+function changeTheme() {
+  document.body.classList.toggle("dark");
+  if (document.body.classList.contains("dark")) {
+    themeChange.innerHTML = `<img src="assets/sun-icon.svg" />`;
+    localStorage.setItem("theme", "dark");
+  } else {
+    themeChange.innerHTML = `<img src="assets/moon-icon.svg" />`;
+    localStorage.setItem("theme", "light");
+  }
+}
+
+function loadTheme() {
+  if (localStorage.getItem("theme") === "dark") {
+    document.body.classList.add("dark");
+    themeChange.innerHTML = `<img src="assets/sun-icon.svg" />`;
+  }
+}
+
+loadTheme();
+
+function changeFont() {
+  const fontSelect = document.getElementById("font-change");
+
+  console.log(font.value);
+  fontSelect.style.fontFamily = font.value;
+  taskInput.style.fontFamily = font.value;
+  document.body.style.fontFamily = font.value;
+  localStorage.setItem("font", font.value);
+}
+
+function loadFont() {
+  if (localStorage.getItem("font")) {
+    font.value = localStorage.getItem("font");
+    changeFont();
+  }
+}
+
+loadFont();
+
+function clearAll() {
+  taskList.innerHTML = "";
+  saveData();
+}
