@@ -182,7 +182,6 @@ main{
     outline: none;
     transition: all 0.3s ease;
     caret-color: #333;
-    letter-spacing: 2px;
 }
 
 .task-input button{
