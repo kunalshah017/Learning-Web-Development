@@ -26,6 +26,7 @@ background-image: linear-gradient(45deg, #85FFBD 0%, #FFFB7D 100%);
     background-attachment: fixed;
     height: 100vh;
     font-family: 'Caveat', cursive;
+    transition: all 0.7s ease;
 }
 
 .dark{
@@ -143,6 +144,11 @@ main{
     place-items: center;
 }
 
+.theme-change-container button:hover{
+    background-color: #FFD56D;
+    transform: scale(1.1);
+}
+
 .task-input-container{
     height: 100px;
     width: 70%;
@@ -174,6 +180,7 @@ main{
     height: 50px;
     width: 100%;
     border: none;
+    background-color: transparent;
     border-bottom: 2px solid #333;
     font-family: 'Caveat', cursive;
     font-size: 1.5rem;
@@ -249,11 +256,19 @@ main{
     padding: 0 0 0 20px;
     margin-top: 10px;
     transition: all 0.7s ease;
+    animation: slideup 0.7s ease;
 }
 
-/* .task:hover{
-    transform: scale(1.1);
-} */
+@keyframes slideup{
+    from{
+        transform: translateY(50px);
+        opacity: 0;
+    }
+    to{
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
 
 .task-checked{
     background-color: #FFFB7D;
@@ -280,6 +295,7 @@ main{
     transition: all 0.7s ease;
     min-height: 50px;
 }
+
 
 .task p{
     font-size: 1.5rem;
@@ -319,6 +335,74 @@ main{
     background-color: #FFD56D;
     transform: scale(1.1);
     opacity: 1;
+}
+
+.undo-container{
+    display: none;
+    justify-content: space-between;
+    padding: 0 20px;
+    align-items: center;
+    height: 100px;
+    width: 300px;
+    background-color: #fff;
+    border-radius: 0 20px 20px 0;
+    position: fixed;
+    bottom: 30px;
+    transition: all 0.7s ease;
+    animation: slide-in 0.7s ease-out;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+@keyframes slide-in{
+    from{
+        left: -100%;
+    }
+    to{
+        left: 0;
+        display: flex;
+    }
+}
+
+@keyframes slide-out{
+    from{
+        left: 0;
+    }
+    to{
+        left: -100%;
+        display: none;
+    }
+    
+}
+
+.undo-container h2{
+    font-size: 2rem;
+    font-weight: 700;
+    color: #333;
+}
+
+.undo-container h3{
+    font-size: 2rem;
+    font-weight: 700;
+    color: #333;
+}
+
+.undo-container button{
+    height: 50px;
+    width: 50px;
+    border: none;
+    background-color: #FFFB7D;
+    border-radius: 50%;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    transition: all 0.7s ease;
+    display: grid;
+    place-items: center;
+}
+
+.undo-container button img{
+    height: 30px;
+    width: 30px;
+    transition: all 1s ease;
 }
 
 @media screen and (max-width: 640px){

@@ -25,7 +25,9 @@ const addTask = () => {
     taskList.appendChild(listItem);
     taskInput.value = "";
   }
+  rearrangeTasks();
   saveData();
+  saveUndoData();
 };
 
 taskInput.addEventListener("keyup", (e) => {
@@ -41,21 +43,32 @@ const completeTask = (e) => {
   } else {
     task.classList.add("task-checked");
   }
+  rearrangeTasks();
   saveData();
 };
 
 const deleteTask = (e) => {
+  saveUndoData();
   const task = e.target.closest("li");
   task.remove();
   saveData();
+  showUndo();
 };
 
 function saveData() {
   localStorage.setItem("taskList", taskList.innerHTML);
 }
 
+function saveUndoData() {
+  localStorage.setItem("undoTask", taskList.innerHTML);
+}
+
 function loadData() {
   taskList.innerHTML = localStorage.getItem("taskList");
+}
+
+function loadUndoData() {
+  taskList.innerHTML = localStorage.getItem("undoTask");
 }
 
 loadData();
@@ -100,6 +113,54 @@ function loadFont() {
 loadFont();
 
 function clearAll() {
+  saveUndoData();
   taskList.innerHTML = "";
   saveData();
+  showUndo();
+}
+
+function rearrangeTasks() {
+  const completedTasks = document.querySelectorAll(".task-checked");
+  completedTasks.forEach((task) => {
+    taskList.appendChild(task);
+  });
+}
+
+function undoAction() {
+  loadUndoData();
+  saveData();
+  saveUndoData();
+}
+
+function showUndo() {
+  if (
+    localStorage.getItem("undoTask") === null ||
+    localStorage.getItem("undoTask") === ""
+  ) {
+    return;
+  }
+  const undoDialog = document.querySelector(".undo-container");
+  const undoTimeOut = document.getElementById("undo-timeout");
+  const undoButton = document.getElementById("undo-button");
+
+  let secondsLeft = 5;
+
+  undoDialog.style.display = "flex";
+  undoDialog.style.animation = "slide-in 0.5s ease-out forwards";
+  undoTimeOut.textContent = secondsLeft + "sec";
+
+  const timerInterval = setInterval(() => {
+    secondsLeft--;
+    undoTimeOut.textContent = secondsLeft + "sec";
+    if (secondsLeft <= 0) {
+      clearInterval(timerInterval);
+      undoDialog.style.animation = "slide-out 0.5s ease-in forwards";
+    }
+  }, 1000);
+
+  undoButton.addEventListener("click", () => {
+    clearInterval(timerInterval);
+    undoAction();
+    undoDialog.style.animation = "slide-out 0.5s ease-in forwards";
+  });
 }
