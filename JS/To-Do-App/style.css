@@ -70,8 +70,14 @@ background-image: linear-gradient(45deg, #85FFBD 0%, #FFFB7D 100%);
     background-color: #333;
 }
 
-.dark .task-list li p{
+.dark .task-text p{
     color: #FFFB7D;
+}
+
+.dark .edit-icon{
+    height: 30px;
+    width: 30px;
+    background-color: #FFFB7D;
 }
 
 main{
@@ -456,6 +462,10 @@ main{
         width: 100%;
     }
 
+    .task-input input{
+        width: 75%;
+    }
+
     .task-input button{
         border-radius: 50%;
     }
@@ -470,5 +480,9 @@ main{
 
     .task-buttons{
         width: 30%;
+    }
+
+    .undo-container{
+        width: 250px;
     }
 }
