@@ -4,6 +4,9 @@ const taskList = document.getElementById("task-list");
 const themeChange = document.getElementById("theme-change");
 let font = document.getElementById("font-change");
 
+var isEditing = false;
+var isDeleting = false;
+
 window.onload = function () {
   taskInput.focus();
 };
@@ -12,7 +15,13 @@ const addTask = () => {
   const task = taskInput.value;
   if (task) {
     const listItem = document.createElement("li");
-    listItem.innerHTML = `<p>${task}</p>
+    listItem.innerHTML = `
+    <div class="task-text">
+    <p>${task}</p>
+    <div class="edit-icon">
+    <img src="assets/edit-icon.svg" onclick="editTask(event)"/>
+    </div>
+    </div>
     <div class="task-buttons">
         <button class="complete" onclick="completeTask(event)">
             <img src="assets/check-icon.svg" />
@@ -49,10 +58,10 @@ const completeTask = (e) => {
 
 const deleteTask = (e) => {
   saveUndoData();
+  showUndo();
   const task = e.target.closest("li");
   task.remove();
   saveData();
-  showUndo();
 };
 
 function saveData() {
@@ -60,7 +69,10 @@ function saveData() {
 }
 
 function saveUndoData() {
-  localStorage.setItem("undoTask", taskList.innerHTML);
+  if (isDeleting) {
+    return;
+  }
+  sessionStorage.setItem("undoTask", taskList.innerHTML);
 }
 
 function loadData() {
@@ -68,7 +80,7 @@ function loadData() {
 }
 
 function loadUndoData() {
-  taskList.innerHTML = localStorage.getItem("undoTask");
+  taskList.innerHTML = sessionStorage.getItem("undoTask");
 }
 
 loadData();
@@ -114,9 +126,9 @@ loadFont();
 
 function clearAll() {
   saveUndoData();
+  showUndo();
   taskList.innerHTML = "";
   saveData();
-  showUndo();
 }
 
 function rearrangeTasks() {
@@ -134,8 +146,10 @@ function undoAction() {
 
 function showUndo() {
   if (
-    localStorage.getItem("undoTask") === null ||
-    localStorage.getItem("undoTask") === ""
+    sessionStorage.getItem("undoTask") === null ||
+    sessionStorage.getItem("undoTask") === "" ||
+    isDeleting ||
+    taskList.innerHTML === ""
   ) {
     return;
   }
@@ -148,6 +162,7 @@ function showUndo() {
   undoDialog.style.display = "flex";
   undoDialog.style.animation = "slide-in 0.5s ease-out forwards";
   undoTimeOut.textContent = secondsLeft + "sec";
+  isDeleting = true;
 
   const timerInterval = setInterval(() => {
     secondsLeft--;
@@ -162,5 +177,56 @@ function showUndo() {
     clearInterval(timerInterval);
     undoAction();
     undoDialog.style.animation = "slide-out 0.5s ease-in forwards";
+    isDeleting = false;
   });
+}
+
+function editTask(e) {
+  const task = e.target.closest("li");
+  const taskText = task.querySelector(".task-text p");
+  const taskButtons = task.querySelector(".task-buttons");
+  const taskEdit = task.querySelector(".task-text img");
+
+  if (isEditing) {
+    isEditing = false;
+    taskText.contentEditable = false;
+    taskText.style.width = "";
+    taskEdit.src = "assets/edit-icon.svg";
+    taskButtons.style.display = "flex";
+    saveData();
+  } else {
+    isEditing = true;
+    taskText.contentEditable = true;
+    taskText.style.width = "80%";
+    taskText.focus();
+    taskEdit.src = "assets/check-icon.svg";
+    taskButtons.style.display = "none";
+
+    const range = document.createRange();
+    const sel = window.getSelection();
+    range.selectNodeContents(taskText);
+    range.collapse(false);
+    sel.removeAllRanges();
+    sel.addRange(range);
+
+    taskText.addEventListener("blur", () => {
+      isEditing = false;
+      taskText.contentEditable = false;
+      taskText.style.width = "";
+      taskEdit.src = "assets/edit-icon.svg";
+      taskButtons.style.display = "flex";
+      saveData();
+    });
+
+    addEventListener("keydown", (e) => {
+      if (e.key === "Enter") {
+        isEditing = false;
+        taskText.contentEditable = false;
+        taskText.style.width = "";
+        taskEdit.src = "assets/edit-icon.svg";
+        taskButtons.style.display = "flex";
+        saveData();
+      }
+    });
+  }
 }
