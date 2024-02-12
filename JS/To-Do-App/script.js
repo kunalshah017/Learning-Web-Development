@@ -12,6 +12,11 @@ window.onload = function () {
 };
 
 const addTask = () => {
+  if (taskInput.value.trim() === "") {
+    taskInput.value = "";
+    return;
+  }
+
   const task = taskInput.value;
   if (task) {
     const listItem = document.createElement("li");
@@ -203,6 +208,9 @@ function editTask(e) {
     taskEdit.src = "assets/check-icon.svg";
     taskButtons.style.display = "none";
 
+    var TempTaskText = taskText.textContent;
+    console.log("Temp Task: ", TempTaskText);
+
     const range = document.createRange();
     const sel = window.getSelection();
     range.selectNodeContents(taskText);
@@ -216,6 +224,9 @@ function editTask(e) {
       taskText.style.width = "";
       taskEdit.src = "assets/edit-icon.svg";
       taskButtons.style.display = "flex";
+      if (taskText.textContent.trim() === "") {
+        taskText.innerHTML = TempTaskText;
+      }
       saveData();
     });
 
@@ -226,6 +237,9 @@ function editTask(e) {
         taskText.style.width = "";
         taskEdit.src = "assets/edit-icon.svg";
         taskButtons.style.display = "flex";
+        if (taskText.textContent.trim() === "") {
+          taskText.innerHTML = TempTaskText;
+        }
         saveData();
       }
     });
