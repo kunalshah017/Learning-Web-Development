@@ -170,6 +170,7 @@ function showUndo() {
     if (secondsLeft <= 0) {
       clearInterval(timerInterval);
       undoDialog.style.animation = "slide-out 0.5s ease-in forwards";
+      isDeleting = false;
     }
   }, 1000);
 
