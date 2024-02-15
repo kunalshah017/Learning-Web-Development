@@ -125,11 +125,53 @@ main{
 
 .theme-change-container{
     height: 100%;
+    position: relative;
     display: flex;
     justify-content: center;
     align-items: center;
     gap: 20px;
+    z-index: 2;
     /* border: 1px solid red; */
+    animation: growCircle 0.7s ease forwards;
+}
+
+@keyframes growCircle {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+.loading-circle{
+    content: "";
+    position: fixed;
+    top: -70%;
+    right: -80%;
+    background-color: #FFFB7D;
+    border-radius: 0 60%;
+    animation: shrinkCircle 1s ease-out forwards;
+    z-index : 1;
+}
+
+@keyframes shrinkCircle {
+    0% {
+        opacity: 1;
+        width: 300%;
+        height: 300%;
+    }
+
+    /* 50% {
+        width: 200%;
+        height: 200%;
+    } */
+
+    100% {
+        width: 0;
+        height: 0;
+    }
 }
 
 .theme-change-container button img{
@@ -165,7 +207,21 @@ main{
     justify-content: space-between;
     align-items: center;
     padding: 0 20px;
+    animation: slideup 2s ease;
 }
+
+@keyframes slideup{
+    from{
+        transform: translateY(50px);
+        opacity: 0;
+    }
+    to{
+        transform: translateY(0);
+        opacity: 1;
+    }
+    
+}
+
 
 .task-input-container h1{
     font-size: 2rem;
@@ -238,7 +294,6 @@ main{
     margin-top: 20px;
     overflow-y: auto;
     scrollbar-width: thin;
-
 }
 
 .task-list{
@@ -261,8 +316,8 @@ main{
     align-items: center;
     padding: 0 0 0 20px;
     margin-top: 10px;
-    transition: all 0.7s ease;
-    animation: slideup 0.7s ease;
+    transition: all 1s ease;
+    animation: slideup 2s ease both;
 }
 
 @keyframes slideup{
@@ -273,6 +328,15 @@ main{
     to{
         transform: translateY(0);
         opacity: 1;
+    }
+}
+
+@keyframes fadeout{
+    from{
+        opacity: 1;
+    }
+    to{
+        opacity: 0;
     }
 }
 
@@ -452,6 +516,36 @@ main{
 }
 
 @media screen and (max-width: 640px){
+
+    .loading-circle{
+        content: "";
+        position: fixed;
+        top: -30%;
+        right: -90%;
+        background-color: #FFFB7D;
+        border-radius: 50%;
+        animation: shrinkCircle 1s ease-out forwards;
+        z-index : 1;
+    }
+    
+    @keyframes shrinkCircle {
+        0% {
+            opacity: 1;
+            width: 200vh;
+            height: 200vh;
+        }
+    
+        /* 50% {
+            width: 200%;
+            height: 200%;
+        } */
+    
+        100% {
+            width: 0;
+            height: 0;
+        }
+    }
+
     .task-input-container{
         width: 90%;
         height: 150px;

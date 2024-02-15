@@ -1,5 +1,6 @@
 const taskInput = document.getElementById("TaskInput");
 const taskList = document.getElementById("task-list");
+const load = document.querySelector(".loading-circle");
 
 const themeChange = document.getElementById("theme-change");
 let font = document.getElementById("font-change");
@@ -9,6 +10,9 @@ var isDeleting = false;
 
 window.onload = function () {
   taskInput.focus();
+  setTimeout(() => {
+    load.style.animation = "none";
+  }, 1000);
 };
 
 const addTask = () => {
@@ -65,8 +69,11 @@ const deleteTask = (e) => {
   saveUndoData();
   showUndo();
   const task = e.target.closest("li");
-  task.remove();
-  saveData();
+  task.style.animation = "fadeout 1s ease-in-out forwards";
+  setTimeout(() => {
+    task.remove();
+    saveData();
+  }, 1000);
 };
 
 function saveData() {
@@ -91,6 +98,8 @@ function loadUndoData() {
 loadData();
 
 function changeTheme() {
+  load.style.animation = "shrinkCircle 1s ease-in-out forwards";
+
   document.body.classList.toggle("dark");
   if (document.body.classList.contains("dark")) {
     themeChange.innerHTML = `<img src="assets/sun-icon.svg" />`;
@@ -99,6 +108,11 @@ function changeTheme() {
     themeChange.innerHTML = `<img src="assets/moon-icon.svg" />`;
     localStorage.setItem("theme", "light");
   }
+
+  // after the animation is done, remove the animation class
+  setTimeout(() => {
+    load.style.animation = "none";
+  }, 1500);
 }
 
 function loadTheme() {
