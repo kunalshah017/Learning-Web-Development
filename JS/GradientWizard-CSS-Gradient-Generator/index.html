@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS Gradient</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <div class="input-container">
+        <div class="color-input">
+            <input type="color" id="color1" onchange="changeColor()" value="#090979">
+            <input type="color" id="color2" onchange="changeColor()" value="#00d4ff">
+        </div>
+        <input type="range" name="degree" id="degree" min="0" max="360" onchange="updateDegree()" title="slider">
+
+        <div class="code">
+            <textarea name="code" id="code" disabled> CSS Magic will happen here</textarea>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+
+</html>
