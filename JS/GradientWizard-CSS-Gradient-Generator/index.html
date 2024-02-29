@@ -7,22 +7,54 @@
     <title>Gradient Wizard</title>
     <meta name="description" content="CSS Gradient Generator">
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="icon" href="/assets/Gradient-Wizard-FavIcon.png" type="image/x-icon">
 </head>
 
 <body>
-
-    <div class="input-container">
-        <div class="color-input">
-            <input type="color" id="color1" onchange="changeColor()" value="#090979">
-            <input type="color" id="color2" onchange="changeColor()" value="#00d4ff">
+    <nav class="nav">
+        <div class="nav-container">
+            <img src="/assets/Gradient-Wizard-Logo.svg" alt="" class="logo-img">
         </div>
-        <input type="range" name="degree" id="degree" min="0" max="360" onchange="updateDegree()" title="slider">
-
-        <div class="code">
-            <textarea name="code" id="code" disabled> CSS Magic will happen here</textarea>
+    </nav>
+    <main>
+        <div class="input-container">
+            <div class="color-input">
+                <input type="color" id="color1" onchange="updateGradient()" value="#090979">
+                <input type="color" id="color2" onchange="updateGradient()" value="#00d4ff">
+                <input type="color" id="color3" onchange="updateGradient()" value="#ff00f7">
+                <button id="addColor" onclick="toggle3Color()">
+                    <i class="fa fa-plus" id="addColorButtonIcon"></i>
+                </button>
+            </div>
+            <div class="rotation-input-container">
+                <div class="predefined-rotation-container">
+                    <i class="fa fa-arrow-up" style="transform: rotate(45deg);" onclick="updateGradientPre(45)"></i>
+                    <i class="fa fa-arrow-up" style="transform: rotate(90deg);" onclick="updateGradientPre(90)"></i>
+                    <i class="fa fa-arrow-up" style="transform: rotate(135deg);" onclick="updateGradientPre(135)"></i>
+                    <i class="fa fa-arrow-up" style="transform: rotate(180deg);" onclick="updateGradientPre(180)"></i>
+                    <i class="fa fa-arrow-up" style="transform: rotate(225deg);" onclick="updateGradientPre(225)"></i>
+                    <i class="fa fa-arrow-up" style="transform: rotate(270deg);" onclick="updateGradientPre(270)"></i>
+                    <i class="fa fa-arrow-up" style="transform: rotate(315deg);" onclick="updateGradientPre(315)"></i>
+                    <i class="fa fa-arrow-up" style="transform: rotate(360deg);" onclick="updateGradientPre(360)"></i>
+                    <i class="fa fa-rotate-right" id="radialGradientButton" onclick="toggleRadialGradient()"></i>
+                </div>
+                <div class="user-input-container">
+                    <label for="degree">Rotate</label>
+                    <input type="range" name="degree" id="degree" min="0" max="360" onchange="updateGradient()"
+                        title="slider">
+                    <div class="current-degree"></div>
+                </div>
+            </div>
+            <div class="code-output">
+                <div name="code" id="code"> CSS Magic will happen here</div>
+                <button onclick="copyCode()">Copy</button>
+            </div>
         </div>
-    </div>
-    <script src="script.js"></script>
+        <script src="script.js"></script>
+    </main>
+    <footer>
+    </footer>
 </body>
 
 </html>
