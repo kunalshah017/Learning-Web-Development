@@ -8,24 +8,38 @@
     <meta name="description" content="CSS Gradient Generator">
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="icon" href="/assets/Gradient-Wizard-FavIcon.png" type="image/x-icon">
+    <link rel="icon" href="assets/Gradient-Wizard-FavIcon.png" type="image/x-icon">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Finger+Paint&display=swap" rel="stylesheet">
 </head>
 
 <body>
     <nav class="nav">
         <div class="nav-container">
-            <img src="/assets/Gradient-Wizard-Logo.svg" alt="" class="logo-img">
+            <img src="assets/Gradient-Wizard-Logo.svg" alt="" class="logo-img">
+            <div class="nav-links">
+                <div class="nav-link" onclick="redirect('https://github.com/kunalshah017/Learning-Web-Development')">
+                    <img src="assets/github.svg" alt="" id="githubLink" href="github.com">Learning Web Development
+                </div>
+            </div>
         </div>
     </nav>
     <main>
-        <div class="input-container">
-            <div class="color-input">
-                <input type="color" id="color1" onchange="updateGradient()" value="#090979">
-                <input type="color" id="color2" onchange="updateGradient()" value="#00d4ff">
-                <input type="color" id="color3" onchange="updateGradient()" value="#ff00f7">
-                <button id="addColor" onclick="toggle3Color()">
-                    <i class="fa fa-plus" id="addColorButtonIcon"></i>
-                </button>
+        <div class=" input-container">
+            <div class="color-input-container">
+                <div class="user-color-input">
+                    <input type="color" id="color1" oninput="updateGradient()" value="#090979">
+                    <input type="color" id="color2" oninput="updateGradient()" value="#00d4ff">
+                    <input type="color" id="color3" oninput="updateGradient()" value="#ff00f7">
+                    <button id="addColor" onclick="toggle3Color()">
+                        <i class="fa fa-plus" id="addColorButtonIcon"></i>
+                    </button>
+                </div>
+                <div class="random-colors-button" onclick="randomColors()">
+                    <img src="assets/random-stars.svg" alt="">
+                    Random Colors
+                </div>
             </div>
             <div class="rotation-input-container">
                 <div class="predefined-rotation-container">
@@ -40,21 +54,44 @@
                     <i class="fa fa-rotate-right" id="radialGradientButton" onclick="toggleRadialGradient()"></i>
                 </div>
                 <div class="user-input-container">
+                    <img src="assets/rotate.svg" id="rotateIcon">
                     <label for="degree">Rotate</label>
-                    <input type="range" name="degree" id="degree" min="0" max="360" onchange="updateGradient()"
+                    <input type="range" name="degree" id="degree" min="0" max="360" oninput="updateGradient()"
                         title="slider">
                     <div class="current-degree"></div>
                 </div>
             </div>
             <div class="code-output">
-                <div name="code" id="code"> CSS Magic will happen here</div>
+                <div name="code" id="code"> CSS Magic🪄✨
+                </div>
                 <button onclick="copyCode()">Copy</button>
             </div>
         </div>
-        <script src="script.js"></script>
     </main>
-    <footer>
+    <footer class="footer-container">
+        <div class="footer-logo">
+            <img src="assets/Gradient-Wizard-Logo.svg" alt="">
+            <div style="margin: 0 20px ; font-size: 9rem; padding-bottom: 20px; user-select: none;">X</div>
+            <div onclick="redirect('https://kunalshah017.vercel.app')" style="cursor: pointer;">kunalshah017</div>
+        </div>
+        <div class="footer-divider-line"></div>
+        <div class="footer-links">
+            <div class="footer-link" onclick="redirect('https://learn-web-dev-kunalshah017.vercel.app/')">More
+                Projects
+            </div>
+            <div class="footer-link"
+                onclick="redirect('https://github.com/kunalshah017/Learning-Web-Development/tree/main/JS/GradientWizard-CSS-Gradient-Generator')">
+                Source Code</div>
+            <div class="footer-link" onclick="redirect('https://kunalshah017.vercel.app')">About Me</div>
+
+        </div>
     </footer>
+    <div class="footer-2">
+        <div class="footer-2-text">Made with ❤️ by Kunal Shah</div>
+        <div class="footer-2-text"><i class="fa fa-copyright"></i> kunalshah017 - 2024</div>
+    </div>
+    <script src="colors.js"></script>
+    <script src="script.js"></script>
 </body>
 
 </html>
