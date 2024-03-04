@@ -10,6 +10,7 @@ const code = document.getElementById("code");
 const currDeg = document.querySelector(".current-degree");
 const rotateIcon = document.getElementById("rotateIcon");
 const savedGradientsList = document.getElementById("savedGradientsList");
+const alertBox = document.querySelector(".alert-container");
 let prevScrollPos = window.pageYOffset;
 currDeg.innerHTML = `${deg.value}°`;
 
@@ -74,6 +75,7 @@ async function copyCode() {
   } catch (err) {
     console.error("Failed to copy: ", err);
   }
+  showAlert();
 }
 
 function toggle3Color() {
@@ -217,4 +219,15 @@ function downloadGradientImage() {
 
   // Simulate click on the link to trigger download
   link.click();
+}
+
+function showAlert() {
+  alertBox.style.display = "flex";
+  setTimeout(() => {
+    alertBox.style.animation = "slide-out 0.7s ease-out";
+    setTimeout(() => {
+      alertBox.style.display = "none";
+      alertBox.style.animation = "slide-in 0.7s ease-in";
+    }, 690);
+  }, 3000);
 }

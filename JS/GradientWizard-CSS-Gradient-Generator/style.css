@@ -693,3 +693,43 @@ input[type="range"]:focus::-ms-fill-upper {
   font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
   font-size: 1.5rem;
 }
+
+.alert-container {
+  display: none;
+  justify-content: space-between;
+  padding: 0 20px;
+  align-items: center;
+  height: 100px;
+  width: 300px;
+  background-color: #fff;
+  border-radius: 0 20px 20px 0;
+  position: fixed;
+  bottom: 30px;
+  transition: all 0.7s ease;
+  animation: slide-in 0.7s ease-out;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #333;
+}
+
+@keyframes slide-in {
+  from {
+    left: -100%;
+  }
+  to {
+    left: 0;
+    display: flex;
+  }
+}
+
+@keyframes slide-out {
+  from {
+    left: 0;
+  }
+  to {
+    left: -100%;
+    display: none;
+  }
+}
