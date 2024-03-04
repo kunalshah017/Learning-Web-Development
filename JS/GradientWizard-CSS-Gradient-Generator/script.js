@@ -3,10 +3,13 @@ const color2 = document.getElementById("color2");
 const color3 = document.getElementById("color3");
 const addColorIcon = document.getElementById("addColorButtonIcon");
 var deg = document.getElementById("degree");
-const mainColor = document.querySelector("body");
+const bodyColor = document.querySelector("body");
+bodyColor.style.background =
+  "linear-gradient(25deg,rgba(2, 0, 36, 1) 0%,rgba(9, 9, 121, 1) 35%,rgba(0, 212, 255, 1) 100%)";
 const code = document.getElementById("code");
 const currDeg = document.querySelector(".current-degree");
 const rotateIcon = document.getElementById("rotateIcon");
+const savedGradientsList = document.getElementById("savedGradientsList");
 let prevScrollPos = window.pageYOffset;
 currDeg.innerHTML = `${deg.value}°`;
 
@@ -15,6 +18,8 @@ var isRadialGradient = false;
 var degValue = 0;
 
 const navbar = document.querySelector(".nav");
+
+loadGradientData();
 
 window.onscroll = function () {
   let currentScrollPos = window.pageYOffset;
@@ -31,16 +36,16 @@ window.onscroll = function () {
 
 function updateGradient() {
   if (!is3Color && !isRadialGradient) {
-    mainColor.style.background = `linear-gradient(${deg.value}deg, ${color1.value} 35%, ${color2.value} 100%)`;
+    bodyColor.style.background = `linear-gradient(${deg.value}deg, ${color1.value} 35%, ${color2.value} 100%)`;
     code.innerHTML = `background: linear-gradient(${deg.value}deg, ${color1.value} 35%, ${color2.value} 100%);`;
   } else if (is3Color && !isRadialGradient) {
-    mainColor.style.background = `linear-gradient(${deg.value}deg, ${color1.value} 0%, ${color2.value} 50%, ${color3.value} 100%)`;
+    bodyColor.style.background = `linear-gradient(${deg.value}deg, ${color1.value} 0%, ${color2.value} 50%, ${color3.value} 100%)`;
     code.innerHTML = `background: linear-gradient(${deg.value}deg, ${color1.value} 0%, ${color2.value} 50%, ${color3.value} 100%);`;
   } else if (!is3Color && isRadialGradient) {
-    mainColor.style.background = `radial-gradient(circle, ${color1.value} 0%, ${color2.value} 100%)`;
+    bodyColor.style.background = `radial-gradient(circle, ${color1.value} 0%, ${color2.value} 100%)`;
     code.innerHTML = `background: radial-gradient(circle, ${color1.value} 0%, ${color2.value} 100%);`;
   } else if (is3Color && isRadialGradient) {
-    mainColor.style.background = `radial-gradient(circle, ${color1.value} 0%, ${color2.value} 50%, ${color3.value} 100%)`;
+    bodyColor.style.background = `radial-gradient(circle, ${color1.value} 0%, ${color2.value} 50%, ${color3.value} 100%)`;
     code.innerHTML = `background: radial-gradient(circle, ${color1.value} 0%, ${color2.value} 50%, ${color3.value} 100%);`;
   }
   currDeg.innerHTML = `${deg.value}°`;
@@ -128,4 +133,107 @@ function randomColors() {
 
 function redirect(url) {
   window.open(url, "_blank");
+}
+
+function saveGradient() {
+  const currentGradient = bodyColor.style.background;
+
+  const li = document.createElement("li");
+  li.innerHTML = `<div class="saved-gradient-color"
+  style="background:${currentGradient}" onclick="openGradient(event)">
+</div>
+<div class="saved-gradient-buttons">
+  <button><i class="fas fa-copy" title="Copy" onclick="copyLikedGradient(event)"></i></button>
+  <button><i class="fas fa-trash" title="Delete" onclick="deleteGradient(event)"></i></button>
+</div>`;
+  console.log(currentGradient);
+  savedGradientsList.appendChild(li);
+
+  // Scroll to the bottom of the list
+  savedGradientsList.scrollTop = savedGradientsList.scrollHeight;
+  saveGradientData();
+}
+
+const openGradient = (e) => {
+  const gradient = e.target.style.background;
+  bodyColor.style.background = gradient;
+  code.innerHTML = `background: ${gradient};`;
+};
+
+const copyLikedGradient = (e) => {
+  const gradient =
+    e.target.parentElement.parentElement.parentElement.querySelector(
+      ".saved-gradient-color"
+    );
+  bodyColor.style.background = gradient.style.background;
+  code.innerHTML = `background: ${gradient.style.background};`;
+  copyCode();
+};
+
+const deleteGradient = (e) => {
+  e.target.parentElement.parentElement.parentElement.remove();
+  saveGradientData();
+};
+
+function saveGradientData() {
+  localStorage.setItem("savedGradients", savedGradientsList.innerHTML);
+}
+
+function loadGradientData() {
+  savedGradientsList.innerHTML = localStorage.getItem("savedGradients");
+}
+
+function downloadGradientImage() {
+  // Create a temporary canvas element
+  var canvas = document.createElement("canvas");
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+  var ctx = canvas.getContext("2d");
+
+  // Draw the background gradient onto the canvas
+  var gradient = ctx.createLinearGradient(
+    0,
+    0,
+    window.innerWidth,
+    window.innerHeight
+  );
+  gradient.addColorStop(0, color1.value); // Replace 'blue' with your gradient start color
+  gradient.addColorStop(1, color2.value); // Replace 'green' with your gradient end color
+  ctx.fillStyle = gradient;
+  ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+  // Convert canvas to data URL
+  var dataURL = canvas.toDataURL();
+
+  // Create a temporary link element
+  var link = document.createElement("a");
+  link.download = "background_gradient.png";
+  link.href = dataURL;
+
+  // Simulate click on the link to trigger download
+  link.click();
+}
+
+//Creating dynamic link that automatically click
+function downloadURI(uri, name) {
+  var link = document.createElement("a");
+  link.download = name;
+  link.href = uri;
+  document.body.appendChild(link);
+  link.click();
+  //after creating link you should delete dynamic link
+  //clearDynamicLink(link);
+}
+
+//Your modified code.
+function printToFile(div) {
+  html2canvas(div, {
+    onrendered: function (canvas) {
+      var myImage = canvas.toDataURL("image/png");
+      //create your own dialog with warning before saving file
+      //beforeDownloadReadMessage();
+      //Then download file
+      downloadURI("data:" + myImage, "yourImage.png");
+    },
+  });
 }

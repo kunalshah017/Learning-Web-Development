@@ -12,7 +12,9 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Finger+Paint&display=swap" rel="stylesheet">
+    <link href="https://use.fontawesome.com/releases/v5.0.1/css/all.css" rel="stylesheet">
     <meta property="og:image" content="https://i.imgur.com/cV5goog.png" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.4.1/html2canvas.min.js"></script>
 </head>
 
 <body>
@@ -67,8 +69,19 @@
                 </div>
                 <button onclick="copyCode()">Copy</button>
             </div>
+            <div class="extra-buttons-container">
+                <button onclick="saveGradient()" class="like-button"> <i class="fas fa-heart"></i></button>
+                <button onclick="printToFile(document.getElementById('downloadImage'))" class="download-button"> <i
+                        class="fas fa-download"></i></button>
+            </div>
         </div>
     </main>
+    <div class="saved-gradients-container">
+        <h1> <i class="fas fa-heart" style="color: rgb(221, 36, 36);"></i> Liked Gradients</h1>
+        <ul class="saved-gradients-list" type="none" id="savedGradientsList">
+        </ul>
+
+    </div>
     <footer class="footer-container">
         <div class="footer-logo">
             <img src="assets/Gradient-Wizard-Logo.svg" alt="">
@@ -91,8 +104,13 @@
         <div class="footer-2-text">Made with ❤️ by Kunal Shah</div>
         <div class="footer-2-text"><i class="fa fa-copyright"></i> kunalshah017 - 2024</div>
     </div>
+
     <script src="colors.js"></script>
     <script src="script.js"></script>
 </body>
+
+<div class="download-image" id="downloadImage">
+
+</div>
 
 </html>
