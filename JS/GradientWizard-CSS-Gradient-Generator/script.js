@@ -183,6 +183,11 @@ function loadGradientData() {
   savedGradientsList.innerHTML = localStorage.getItem("savedGradients");
 }
 
+function clearAllLikedGradients() {
+  savedGradientsList.innerHTML = "";
+  saveGradientData();
+}
+
 function downloadGradientImage() {
   // Create a temporary canvas element
   var canvas = document.createElement("canvas");
@@ -212,28 +217,4 @@ function downloadGradientImage() {
 
   // Simulate click on the link to trigger download
   link.click();
-}
-
-//Creating dynamic link that automatically click
-function downloadURI(uri, name) {
-  var link = document.createElement("a");
-  link.download = name;
-  link.href = uri;
-  document.body.appendChild(link);
-  link.click();
-  //after creating link you should delete dynamic link
-  //clearDynamicLink(link);
-}
-
-//Your modified code.
-function printToFile(div) {
-  html2canvas(div, {
-    onrendered: function (canvas) {
-      var myImage = canvas.toDataURL("image/png");
-      //create your own dialog with warning before saving file
-      //beforeDownloadReadMessage();
-      //Then download file
-      downloadURI("data:" + myImage, "yourImage.png");
-    },
-  });
 }

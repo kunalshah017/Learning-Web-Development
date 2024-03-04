@@ -71,13 +71,18 @@
             </div>
             <div class="extra-buttons-container">
                 <button onclick="saveGradient()" class="like-button"> <i class="fas fa-heart"></i></button>
-                <button onclick="printToFile(document.getElementById('downloadImage'))" class="download-button"> <i
+                <button onclick="printToFile(document.getElementById('downloadImage')" class="download-button"> <i
                         class="fas fa-download"></i></button>
             </div>
         </div>
     </main>
     <div class="saved-gradients-container">
-        <h1> <i class="fas fa-heart" style="color: rgb(221, 36, 36);"></i> Liked Gradients</h1>
+        <div class="saved-gradients-header-container">
+            <h1> <i class="fas fa-heart" style="color: rgb(221, 36, 36);"></i> Liked Gradients</h1>
+            <button onclick="clearAllLikedGradients()" class="clear-all-liked-gradients-button"><i
+                    class="fas fa-trash"></i> Clear
+                All</button>
+        </div>
         <ul class="saved-gradients-list" type="none" id="savedGradientsList">
         </ul>
 
@@ -108,9 +113,6 @@
     <script src="colors.js"></script>
     <script src="script.js"></script>
 </body>
-
-<div class="download-image" id="downloadImage">
-
 </div>
 
 </html>
