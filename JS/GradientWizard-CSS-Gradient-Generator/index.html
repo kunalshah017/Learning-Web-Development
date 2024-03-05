@@ -71,7 +71,7 @@
             </div>
             <div class="extra-buttons-container">
                 <button onclick="saveGradient()" class="like-button"> <i class="fas fa-heart"></i></button>
-                <button onclick="printToFile(document.getElementById('downloadImage')" class="download-button"> <i
+                <button onclick="downloadGradientImage()" class="download-button"> <i
                         class="fas fa-download"></i></button>
             </div>
         </div>
@@ -90,8 +90,10 @@
     <footer class="footer-container">
         <div class="footer-logo">
             <img src="assets/Gradient-Wizard-Logo.svg" alt="">
-            <div style="margin: 0 20px ; font-size: 9rem; padding-bottom: 20px; user-select: none;">X</div>
-            <div onclick="redirect('https://kunalshah017.vercel.app')" style="cursor: pointer;">kunalshah017</div>
+            <div class="footer-x">X
+            </div>
+            <div onclick="redirect('https://kunalshah017.vercel.app')" style="cursor: pointer;"
+                class="footer-kunalshah017">kunalshah017</div>
         </div>
         <div class="footer-divider-line"></div>
         <div class="footer-links">
