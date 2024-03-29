@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pythagorean Triplet</title>
+</head>
+
+<body>
+
+    <script>
+        let a = parseInt(prompt("Enter the first number: "));
+        let b = parseInt(prompt("Enter the second number: "));
+        let c = parseInt(prompt("Enter the third number: "));
+
+        let max = a;
+        if (b > max) {
+            max = b;
+        }
+        if (c > max) {
+            max = c;
+        }
+
+        let x, y, z;
+        if (max == a) {
+            x = b;
+            y = c;
+            z = a;
+        } else if (max == b) {
+            x = a;
+            y = c;
+            z = b;
+        } else {
+            x = a;
+            y = b;
+            z = c;
+        }
+
+        if (max * max == x * x + y * y) {
+            console.log(`${x}, ${y} and ${z} are Pythagorean Triplet`);
+        } else {
+            console.log(`${x}, ${y} and ${z} are not Pythagorean Triplet`);
+        }
+    </script>
+</body>
+
+</html>

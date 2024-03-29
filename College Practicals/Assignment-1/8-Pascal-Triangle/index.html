@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pascal Triangle</title>
+</head>
+
+<body>
+
+    <p id="pascal-triangle"></p>
+
+    <script>
+        let n = 8;
+        let pascalTriangle = "";
+
+        for (let i = 0; i < n; i++) {
+            pascalTriangle += "&nbsp;&nbsp".repeat(n - i);
+            for (let j = 0; j <= i; j++) {
+                pascalTriangle += `${factorial(i) / (factorial(j) * factorial(i - j))} `;
+                pascalTriangle += "&nbsp;&nbsp";
+            }
+            pascalTriangle += "<br>";
+        }
+
+        document.getElementById("pascal-triangle").innerHTML = pascalTriangle;
+
+        function factorial(num) {
+            if (num === 0 || num === 1) {
+                return 1;
+            }
+            return num * factorial(num - 1);
+        }
+    </script>
+
+</body>
+
+</html>

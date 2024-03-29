@@ -1,0 +1,65 @@
+/* Element Selector */
+div {
+  background-color: red;
+}
+
+/* Class Selector */
+.yellow {
+  background-color: yellow;
+}
+
+/* ID Selector */
+#green {
+  background-color: green;
+}
+
+/* Direct Child Selector */
+span > p {
+  background-color: blue;
+}
+
+/* Descendent Selector */
+div p {
+  background-color: pink;
+}
+
+/* universal selector */
+* {
+  margin: 0;
+  padding: 0;
+}
+
+/* Attribute Selector */
+input[type="text"] {
+  background-color: orange;
+}
+
+/* Pseudo-class Selector */
+a:hover {
+  background-color: purple;
+}
+
+a:active {
+  background-color: brown;
+}
+
+a:visited {
+  background-color: grey;
+}
+
+a:link {
+  background-color: black;
+}
+
+label:first-child {
+  color: green;
+}
+
+/* Pseudo-element Selector */
+p::first-line {
+  color: red;
+}
+
+p::first-letter {
+  color: blue;
+}

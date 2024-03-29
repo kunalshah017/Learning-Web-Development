@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Specificity</title>
+    <style>
+        /* element selector */
+        heading {
+            font-size: 30px;
+            color: red;
+        }
+
+        /* class selector */
+        .heading {
+            font-size: 20px;
+            color: green;
+        }
+
+        .heading2 {
+            color: blue;
+        }
+
+        .heading1 {
+            color: yellow;
+        }
+
+        /* id selector */
+        #id-heading {
+            color: purple;
+        }
+
+        /* attribute selector */
+        [data-x] {
+            color: orange;
+        }
+
+        code {
+            background-color: lightgrey;
+            padding: 10px;
+            margin: 10px;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+
+<body>
+    <heading>Specificity in CSS</heading>
+    <h5>Universal Selector: 0</h5>
+    <h4>Element selectors and pseudo-elements: 1</h4>
+    <h3>Classes, attribute and pseudo selectors: 10</h3>
+    <h2>ID selectors: 100</h2>
+    <h1>Inline styles: 1000</h1>
+    <h1>!important: 10000</h1>
+
+    if selector are same then the last one will be applied.
+    <h1 class="heading heading1 heading2">This is the last classselector</h1>
+    <h1 class="heading" id="id-heading">This is Id selector</h1>
+
+    <h2 data-x="y">This is attribute selector</h2>
+
+    <h3 style="color: pink;">This is inline style</h3>
+
+    <p>
+        <code>
+            a.harryclass.rohan-class[href]:hover {
+                color: red;
+              }
+        </code>
+    </p>
+    My Specificity is 1 + 10 + 10 + 10 + 10 = 41
+
+</body>
+
+</html>

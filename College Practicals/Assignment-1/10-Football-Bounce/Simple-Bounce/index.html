@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ball Animation</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        img {
+            position: absolute;
+            height: 120px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <img src="football.png" alt="">
+    <script>
+        // simple linear motion
+        let ball = document.querySelector("img");
+        let x = 0;
+        let dx = 10;
+
+        function animate() {
+            x += dx;
+            ball.style.left = x + "px";
+            if (x + ball.clientWidth > window.innerWidth - 5 || x < 0) {
+                dx *= -1;
+            }
+            requestAnimationFrame(animate);
+        }
+
+        animate();
+    </script>
+</body>
+
+</html>

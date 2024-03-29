@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bouncing Ball</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .bounce-area {
+            align-self: flex-end;
+            width: 100vw;
+            height: 90vh;
+            position: relative;
+            display: flex;
+            justify-content: center;
+        }
+
+        .ball {
+            position: absolute;
+            height: 120px;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Click the ball</h1>
+    <div class="bounce-area">
+        <img src="football.png" alt="" class="ball">
+    </div>
+
+    <script>
+        // make the ball bounce in y direction only and slowly come to rest make the ball bounce inside bounce-area only
+        let ball = document.querySelector(".ball");
+        let bounceArea = document.querySelector(".bounce-area");
+
+        let y = 0;
+        let dy = 0;
+        let gravity = 0.5;
+
+        function animate() {
+            dy += gravity;
+            y += dy;
+
+            // for bounce back and reduce the speed
+            if (y + ball.clientHeight > bounceArea.clientHeight) {
+                y = bounceArea.clientHeight - ball.clientHeight;
+                dy *= -0.9;
+                // console.log("y: ", y, "dy: ", dy);
+            }
+
+            ball.style.top = y + "px";
+
+            // to stop the ball when it reaches the bottom
+            if (Math.abs(dy) < 0.1 && y + ball.clientHeight == bounceArea.clientHeight) {
+                dy = 0;
+            }
+
+            requestAnimationFrame(animate);
+        }
+
+        // event listener of click on ball to make it bounce
+        ball.addEventListener("click", () => {
+            animate();
+        });
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Mapping</title>
+    <style>
+        .mapped-image {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+    </style>
+</head>
+
+<body>
+    <h1 id="main"><u>Jobs you can do from home</u></h1>
+    <div class="mapped-image">
+        <img src="sample.jpg" usemap="#image-map">
+        <map name="image-map">
+            <area target="" alt="Editing" title="Editing" href="#editing" coords="337,116,72" shape="circle"></area>
+            <area target="" alt="Consultant" title="Consultant" href="#consultant" coords="665,101,64"
+                shape="circle"></area>
+            <area target="" alt="Work From Home" title="Work From Home" href="#main" coords="415,194,620,383"
+                shape="rect"></area>
+            <area target="" alt="Data Entry" title="Data Entry" href="#dataEntry" coords="890,145,84"
+                shape="circle"></area>
+            <area target="" alt="Technical Writer" title="Technical Writer" href="#technicalWriter"
+                coords="872,330,946,317,1009,374,1008,453,899,468,839,457,828,390,847,356" shape="poly"></area>
+            <area target="" alt="Social Media Manager" title="Social Media Manager" href="#socialMedia"
+                coords="655,374,724,351,785,372,800,418,808,458,795,484,727,501,654,504,620,479,631,418"
+                shape="poly"></area>
+            <area target="" alt="Help Desk" title="Help Desk" href="#helpDesk"
+                coords="293,379,337,351,386,391,409,450,395,488,353,503,291,503,247,503,240,457" shape="poly"></area>
+            <area target="" alt="Digital Marketer" title="Digital Marketer" href="#digitalMarketer"
+                coords="121,137,174,163,212,199,224,239,204,284,168,303,122,314,69,305,32,271,18,215,77,161"
+                shape="poly"></area>
+            <area target="" alt="Blogging" title="Blogging" href="#blogging" coords="115,435,80" shape="circle"></area>
+        </map>
+    </div>
+    <div class="details">
+        <h2 id="editing">Editing</h2>
+        <p>Editing is a process of selecting and preparing written, visual, audible, and film media used to convey
+            information. The editing process can involve correction, condensation, organization, and many other
+            modifications performed with an intention of producing a correct, consistent, accurate and complete work.
+        </p>
+        <h2 id="consultant">Consultant</h2>
+        <p>A consultant is a professional who provides expert advice in a particular area such as security, management,
+            education, accountancy, law, human resources, marketing, finance, engineering, science, digital
+            communication, technology, or any of many other specialized fields.</p>
+        <h2 id="dataEntry">Data Entry</h2>
+        <p>Data entry is the act of entering information into electronic formats by using word processing or data
+            processing software hosted on a computer and it's data entry operators who perform these tasks.</p>
+        <h2 id="technicalWriter">Technical Writer</h2>
+        <p>Technical writing is writing or drafting technical communication used in technical and occupational fields,
+            such as computer hardware and software, engineering, chemistry, aeronautics, robotics, finance, medical,
+            consumer electronics, and biotechnology.</p>
+        <h2 id="socialMedia">Social Media Manager</h2>
+        <p>Social media management is the process of creating, scheduling, analyzing, and engaging with content posted
+            on
+            social media platforms, like Facebook, Instagram, and Twitter.</p>
+        <h2 id="helpDesk">Help Desk</h2>
+        <p>A help desk is a resource intended to provide the customer or end user with information and support related
+            to
+            a company's or institution's products and services.</p>
+        <h2 id="digitalMarketer">Digital Marketer</h2>
+        <p>Digital marketing is the component of marketing that utilizes internet and online based digital technologies
+            such as desktop computers, mobile phones and other digital media and platforms to promote products and
+            services.</p>
+        <h2 id="blogging">Blogging</h2>
+        <p>A blog is a discussion or informational website published on the World Wide Web consisting of discrete,
+            often informal diary-style text entries. Posts are typically displayed in reverse chronological order, so
+            that the most recent post appears first, at the top of the web page.</p>
+    </div>
+</body>
+
+</html>
