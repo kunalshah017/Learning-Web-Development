@@ -1,0 +1,109 @@
+<!-- Design a web page demonstrating different Core 
+JavaScript references (Array, Boolean, Date, Function, Math, Number, Object, 
+String, regExp) -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Core JS</title>
+</head>
+
+<body>
+
+    <h1>Core JS</h1>
+
+    <h2>Array</h2>
+    <p>
+        <strong>Creating an array:</strong><br>
+        <script>
+            const fruits = ["Apple", "Banana", "Cherry"];
+            document.write(fruits);
+        </script>
+    </p>
+
+    <h2>Boolean</h2>
+    <p>
+        <strong>Creating a boolean:</strong><br>
+        <script>
+            const x = 5;
+            const y = 5;
+            document.write(x == y);
+        </script>
+    </p>
+
+    <h2>Date</h2>
+    <p>
+        <strong>Creating a date:</strong><br>
+        <script>
+            const date = new Date();
+            document.write(date);
+        </script>
+    </p>
+
+    <h2>Function</h2>
+    <p>
+        <strong>Creating a function:</strong><br>
+        <script>
+            function myFunction(p1, p2) {
+                return p1 * p2;
+            }
+            document.write(myFunction(4, 3));
+        </script>
+    </p>
+
+    <h2>Math</h2>
+    <p>
+        <strong>Using Math:</strong><br>
+        <script>
+            document.write(Math.PI);
+        </script>
+    </p>
+
+    <h2>Number</h2>
+    <p>
+        <strong>Creating a number:</strong><br>
+        <script>
+            const num = 123;
+            document.write(num);
+        </script>
+    </p>
+
+    <h2>Object</h2>
+    <p>
+        <strong>Creating an object:</strong><br>
+        <script>
+            const person = {
+                name: "John",
+                age: 30,
+                city: "New York"
+            };
+            document.write(person.name + ", " + person.age + ", " + person.city);
+        </script>
+    </p>
+
+    <h2>String</h2>
+    <p>
+        <strong>Creating a string:</strong><br>
+        <script>
+            const str = "Hello, World!";
+            document.write(str);
+        </script>
+    </p>
+
+    <h2>RegExp</h2>
+    <p>
+        <strong>Creating a regular expression:</strong>
+        <script>
+            const str2 = "Visit W3Schools";
+            const patt = /w3schools/i;
+            document.write(str.match(patt));
+        </script>
+    </p>
+
+
+</body>
+
+</html>

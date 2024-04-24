@@ -1,0 +1,32 @@
+<!-- Write a program in JavaScript to accept a sentence 
+from the user and display the number of words in it. -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS Count Words</title>
+</head>
+
+<body>
+
+    <h1>Count Words</h1>
+    <h2>Enter a sentence to count words:</h2>
+    <input type="text" id="sentence" placeholder="Enter a sentence">
+    <button onclick="countWords()">Count Words</button>
+    <p id="result"></p>
+
+    <script>
+        function countWords() {
+            let sentence = document.getElementById("sentence").value;
+            let words = sentence.split(" ");
+            let count = words.length;
+            document.getElementById("result").innerText = `Number of words: ${count}`;
+        }
+    </script>
+
+</body>
+
+</html>

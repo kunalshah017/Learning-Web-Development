@@ -1,0 +1,104 @@
+<!-- Design a form and validate all the controls placed 
+on the form using Java Script -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS Form</title>
+
+    <style>
+        h1 {
+            text-align: center;
+        }
+
+        form {
+            text-align: center;
+        }
+
+        input {
+            width: 300px;
+            height: 30px;
+            font-size: 20px;
+            margin: 10px;
+        }
+
+        input[type="submit"] {
+            background-color: #4CAF50;
+            color: white;
+            margin: 5px;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+
+        body {
+            background-color: #f1f1f1;
+        }
+
+        h1 {
+            color: #333;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>Form Validation</h1>
+    <form name="form" onsubmit="return validate()">
+        <input type="text" name="name" id="name" placeholder="Enter your name"><br>
+        <input type="email" name="email" id="email" placeholder="Enter your email"><br>
+        <input type="password" name="password" id="password" placeholder="Enter your password"><br>
+        <input type="password" name="cpassword" id="cpassword" placeholder="Confirm your password"><br>
+        <input type="number" name="age" id="age" placeholder="Enter your age"><br>
+        <input type="submit" value="Submit">
+    </form>
+
+    <script>
+        function validate() {
+            var name = document.getElementById("name").value;
+            var email = document.getElementById("email").value;
+            var password = document.getElementById("password").value;
+            var cpassword = document.getElementById("cpassword").value;
+            var age = document.getElementById("age").value;
+
+            var emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
+
+            if (name == "") {
+                alert("Name is required");
+                return false;
+            } else if (email == "") {
+                alert("Email is required");
+                return false;
+            }
+            else if (!email.match(emailRegex)) {
+                alert("Invalid Email");
+                return false;
+            }
+            else if (password == "") {
+                alert("Password is required");
+                return false;
+            } else if (cpassword == "") {
+                alert("Confirm Password is required");
+                return false;
+            } else if (password != cpassword) {
+                alert("Password and Confirm Password should be same");
+                return false;
+            } else if (age == "") {
+                alert("Age is required");
+                return false;
+            } else if (age < 18) {
+                alert("Age should be greater than 18");
+                return false;
+            } else {
+                return true;
+            }
+        }
+    </script>
+
+</body>
+
+</html>
